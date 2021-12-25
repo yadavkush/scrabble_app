@@ -1,0 +1,32 @@
+<div class="container">
+  <h1 class="my-4 text-center text-lg-left">LeaderBoard</h1>
+  <table>
+  <thead>
+    <tr>
+      <th>Member</th>
+      <th>Contact Number</th>
+      <th>Joining Date</th>
+      <th>No of Match</th>
+      <th>Aaverage Score</th>
+      <th>Highest score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @members.each do |member| %>
+     <tr>
+      <td><%= member.name %></td>
+      <td><%= member.contact_number %></td>
+      <td><%= member.joining_date %></td>
+      <td><%= member.teams.count %></td>
+      <td>
+        <%=member&.teams.pluck(:score).sum / member&.teams.pluck(:score).count  if member&.teams.count > 0 %>
+      </td>
+      <td>
+        <%=member&.teams.order('score DESC')&.first&.score || 0%>
+      </td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>

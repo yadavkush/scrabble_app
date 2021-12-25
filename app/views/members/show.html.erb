@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @member.name %>
+</p>
+
+<p>
+  <strong>Contact number:</strong>
+  <%= @member.contact_number %>
+</p>
+
+<p>
+  <strong>Joining date:</strong>
+  <%= @member.joining_date %>
+</p>
+
+<p>
+  <strong>Match details</strong>
+</p>
+
+<p>
+  <strong>Number of wins: <%=@no_of_win%></strong>
+</p>
+
+<p>
+  <strong>Number of losses: <%=@no_of_los%> </strong>
+</p>
+
+<p>
+  <strong>Average score: <%=@member&.teams.pluck(:score).sum / @member&.teams.pluck(:score).count  if @member&.teams.count > 0 %></strong>
+</p>
+
+<p>
+  <strong>Highest score: <%=@member&.teams.order('score DESC')&.first&.score || 0%></strong>
+</p>
+
+<%= link_to 'Edit', edit_member_path(@member), class: "btn btn-info" %> |
+<%= link_to 'Back', members_path, class: "btn btn-warning" %>

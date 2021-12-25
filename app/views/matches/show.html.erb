@@ -1,0 +1,56 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Match details:</strong>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @match.title %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @match.start_date %>
+</p>
+
+<p>
+  <strong>Teams details:</strong>
+</p>
+
+<p>
+  <strong>Player 1:</strong>
+</p>
+<p>
+  <strong>Name :</strong>
+  <%= @member.teams.first.member.name %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @member.participants.first.score %>
+</p>
+
+<p>
+  <strong>Player 2:</strong>
+</p> 
+<p>
+  <strong>Name :</strong>
+  <%= @member.teams.second.player.name %>
+</p>
+
+<p>
+  <strong>Score:</strong>
+  <%= @member.teams.second.score %>
+</p>
+
+<p>
+  <strong>Winer details:</strong>
+</p>
+
+<p>
+  <strong><%=@member.teams.first.score > @member.teams.second.score ? @member.teams.first.member.name : @member.teams.second.member.name%> Won the game by <%=@member.teams.first.score > @member.teams.second.score ? @member.teams.first.score : @member.teams.second.score%></strong>
+</p> 
+
+<%= link_to 'Edit', edit_match_path(@match), class: "btn btn-info" %> |
+<%= link_to 'Back', matches_path, class: "btn btn-warning" %>
